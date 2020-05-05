@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="value"
+            type="java.lang.Integer" />
+
+        <variable
+            name="isStarted"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="listener"
+            type="com.ddhuy4298.demomvvm.activities.main.MainListener" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".activities.main.MainActivity">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{value + ``}" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="@{!isStarted}"
+            android:onClick="@{v -> listener.onStartClicked()}"
+            android:text="Start" />
+
+    </LinearLayout>
+</layout>
