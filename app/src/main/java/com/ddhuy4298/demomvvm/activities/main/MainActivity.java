@@ -1,5 +1,7 @@
 package com.ddhuy4298.demomvvm.activities.main;
 
+import android.graphics.Bitmap;
+
 import androidx.lifecycle.Observer;
 
 import com.ddhuy4298.demomvvm.R;
@@ -21,16 +23,11 @@ public class MainActivity extends ActivityBase<ActivityMainBinding, MainViewMode
     @Override
     protected void init() {
         binding.setListener(this);
-        viewModel.getValue().observe(this, new Observer<Integer>() {
+        binding.setLifecycleOwner(this);
+        viewModel.getValue().observe(this, new Observer<Bitmap>() {
             @Override
-            public void onChanged(Integer integer) {
-                binding.setValue(integer);
-            }
-        });
-        viewModel.getIsStarted().observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                binding.setIsStarted(aBoolean);
+            public void onChanged(Bitmap bitmap) {
+                binding.imDownload.setImageBitmap(bitmap);
             }
         });
 
@@ -38,6 +35,6 @@ public class MainActivity extends ActivityBase<ActivityMainBinding, MainViewMode
 
     @Override
     public void onStartClicked() {
-        viewModel.startCounter();
+        viewModel.startCounter("https://wall.vn/wp-content/uploads/2020/03/hinh-nen-cristiano-ronaldo-2-scaled.jpgf");
     }
 }
